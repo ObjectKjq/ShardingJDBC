@@ -67,10 +67,10 @@ show slave status\G
 # 主库中查看状态
 show processlist;
 ```
-master_port：Master的端口号，指的是容器的端口号,如果mster 端口为3306 可以省略不写
-master_user：用于数据同步的用户
-master_password：用于同步的用户的密码
-master_log_file：指定 Slave 从哪个日志文件开始复制数据，即上文中提到的 File 字段的值
-master_log_pos：从哪个 Position 开始读，即上文中提到的 Position 字段的值
-master_connect_retry：如果连接失败，重试的时间间隔，单位是秒，默认是60秒
-在Slave 中的mysql终端执行show slave status \G;用于查看主从同步状态
+- master_port：Master的端口号，指的是容器的端口号,如果mster 端口为3306 可以省略不写 
+- master_user：用于数据同步的用户 
+- master_password：用于同步的用户的密码 
+- master_log_file：指定 Slave 从哪个日志文件开始复制数据，即上文中提到的 File 字段的值 
+- master_log_pos：从哪个 Position 开始读，即上文中提到的 Position 字段的值 
+- master_connect_retry：如果连接失败，重试的时间间隔，单位是秒，默认是60秒 
+- 在Slave 中的mysql终端执行show slave status \G;用于查看主从同步状态

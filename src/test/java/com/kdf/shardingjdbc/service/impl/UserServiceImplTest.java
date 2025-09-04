@@ -3,6 +3,7 @@ package com.kdf.shardingjdbc.service.impl;
 import com.kdf.shardingjdbc.model.User;
 import com.kdf.shardingjdbc.service.UserService;
 // import jakarta.annotation.Resource;
+import org.apache.shardingsphere.api.hint.HintManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -31,7 +32,9 @@ class UserServiceImplTest {
 
     @Test
     void findUsers() {
-
+        // 对于一致性要求强的设置强制查询路游到主库
+        HintManager hintManager = HintManager.getInstance();
+        hintManager.setMasterRouteOnly();
         List<User> users = userService.findUsers();
         System.out.println(users);
     }
