@@ -57,6 +57,8 @@ SHOW MASTER STATUS;
 ```
 
 ```shell
+# 登录mysql
+mysql -uroot -ptest1
 # 进入从库容器内，登录mysql
 stop slave;
 change master to master_host='192.168.50.41', master_user='slave1', master_password='test1', master_port=3306, master_log_file='mysql-bin.000001', master_log_pos=1252, master_connect_retry=30;

@@ -94,17 +94,17 @@
     </properties>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <jvmArguments>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                    </jvmArguments>
-                </configuration>
-            </plugin>
-        </plugins>
+        <!-- <plugins> -->
+        <!--     <plugin> -->
+        <!--         <groupId>org.springframework.boot</groupId> -->
+        <!--         <artifactId>spring-boot-maven-plugin</artifactId> -->
+        <!--         <configuration> -->
+        <!--             <jvmArguments> -->
+        <!--                 &#45;&#45;add-opens java.base/java.lang=ALL-UNNAMED -->
+        <!--             </jvmArguments> -->
+        <!--         </configuration> -->
+        <!--     </plugin> -->
+        <!-- </plugins> -->
     </build>
 
 </project>
