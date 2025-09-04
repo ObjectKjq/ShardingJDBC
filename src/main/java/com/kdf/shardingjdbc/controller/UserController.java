@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public Boolean addAudio(@RequestBody User user) {
+    public Boolean addUser(@RequestBody User user) {
         // 获取用户信息
         userService.addUser(user);
         return true;
