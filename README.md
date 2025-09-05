@@ -77,7 +77,7 @@ show processlist;
 - master_connect_retry：如果连接失败，重试的时间间隔，单位是秒，默认是60秒 
 - 在Slave 中的mysql终端执行show slave status \G;用于查看主从同步状态
 
-## 兼容旧版
+## 兼容旧版JDK
 ```shell
 # 启动时添加这个虚拟机选项，可以通过反射访问static final字段
 --add-opens java.base/java.lang=ALL-UNNAMED

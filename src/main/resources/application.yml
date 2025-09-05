@@ -17,7 +17,7 @@ spring:
   shardingsphere:
     datasource:
       # 数据源名称定义
-      names: ds0,ds1,ds2
+      names: ds0,ds1,ds2,dst2
       # 主数据源
       ds0:
         type: com.alibaba.druid.pool.DruidDataSource
@@ -38,6 +38,13 @@ spring:
         url: jdbc:mysql://192.168.50.43:3306/test
         username: root
         password: test1
+      # 主数据源
+      dst2:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.50.70:3306/test
+        username: root
+        password: Dxzw@1234.
     # 读写分离配置
 #    masterslave:
 #      # dataSource 随意给masterslave 设置一个名字
@@ -51,18 +58,22 @@ spring:
     sharding:
       tables:
         t_goods:
-          actual-data-nodes: ms_ds.t_goods_${1..2}
+          actual-data-nodes: dst1.t_goods_${1..2},dst2.t_goods_${1..2}
           # 指定goods表 主键gid 生成策略为 SNOWFLAKE
           key-generator:
             column: gid
             type: SNOWFLAKE
+          database-strategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: dst$->{user_id % 2 + 1}
           # 指定分片策略 约定gid值是偶数添加到goods_1表，如果gid是奇数添加到goods_2表
           table-strategy:
             inline:
               sharding-column: gid
               algorithm-expression: t_goods_$->{gid % 2 + 1}
       master-slave-rules:
-        ms_ds:
+        dst1:
           # 负载均衡算法 round_robin随机（内置算法）
           load-balance-algorithm-type: round_robin
           # 主库
